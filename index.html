@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Space Foods</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mea+Culpa&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+
+  <dialog id="meuModal">
+    <div class="modal-conteudo">
+      <h2 id="modal-titulo">Nome do Produto</h2>
+      <img id="modal-imagem" src="" alt=""
+        style="max-width: 180px; max-height: 180px; margin-bottom: 20px; object-fit: contain;">
+      <p id="modal-descricao">Descrição detalhada do product selecionado.</p>
+      <span id="modal-preco"
+        style="font-weight: bold; color: #2e7d32; font-size: 18pt; margin-bottom: 25px; font-family: sans-serif;">R$
+        0,00</span>
+      <button class="btn-fechar-modal" onclick="document.getElementById('meuModal').close()">Fechar</button>
+    </div>
+  </dialog>
+
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark" style="background-color: orange">
+    <div class="container-fluid">
+      <a class="navbar-brand text-white" href="#" translate="no">Space Foods</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon-custom">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active text-white" aria-current="page" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#">Quem somos</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Cardápio
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#burguers">Lanches</a></li>
+              <li><a class="dropdown-item" href="#pizzas">Pizzas</a></li>
+              <li><a class="dropdown-item" href="#porcoes">Porções</a></li>
+              <li><a class="dropdown-item" href="#bebidas">Bebidas</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="slider-wrapper" id="home">
+    <div class="slide active">
+      <img src="img/First_burguer-image.png" alt="Slide 1">
+    </div>
+    <div class="slide">
+      <img src="img/First_pizza-image.png" alt="Slide 2">
+    </div>
+    <div class="slide">
+      <img src="img/First_fries-image.png" alt="Slide 3">
+    </div>
+
+    <button class="arrow prev" onclick="moveSlide(-1)">&#10094;</button>
+    <button class="arrow next" onclick="moveSlide(1)">&#10095;</button>
+
+    <div class="pagination">
+      <span class="bar active" onclick="currentSlide(0)"></span>
+      <span class="bar" onclick="currentSlide(1)"></span>
+      <span class="bar" onclick="currentSlide(2)"></span>
+    </div>
+  </div>
+
+  <main>
+    <div class="cardapio-text">
+      <h1>Cardápio</h1>
+    </div>
+
+    <div class="icons">
+      <a href="#burguers"><img src="img/First_burguer-image.png" alt=""> </a> 
+       <a href="#porcoes"><img src="img/First_fries-image.png" alt=""></a>
+       <a href="#pizzas"><img src="img/First_pizza-image.png" alt=""></a>
+      <a href="#bebidas"> <img src="img/CocaCola_img.png" alt=""></a>
+    </div>
+
+    <div class="linha"></div>
+    <h2 id="burguers" translate="no">Burguers</h2>
+
+    <div class="slider-cardapio-wrapper">
+      <button class="seta-cardapio esq" onclick="scrollCardapio(this, -1)">&#10094;</button>
+
+      <div class="container-cardapio" >
+        <div class="bloco" data-nome="Cheese Burguer"
+          data-desc="Pão brioche, blend bovino de 150g e muito queijo derretido." data-preco="R$ 24,90"
+          data-img="img/Cheese-burguer.png" onclick="abrirModalDinamico(this)">
+          <img src="img/Cheese-burguer.png" alt="Cheese-burguer">
+        </div>
+        <div class="bloco" data-nome="Bacon Cheese Burguer"
+          data-desc="Hambúrguer de 150g com queijo prato e fatias generosas de bacon crocante." data-preco="R$ 29,90"
+          data-img="img/Bacon-cheese_burguer.png" onclick="abrirModalDinamico(this)">
+          <img src="img/Bacon-cheese_burguer.png" alt="Bacon-cheese-burguer">
+        </div>
+        <div class="bloco" data-nome="Big Cheese Bacon"
+          data-desc="Dois blends artesanais, o dobro de queijo e muito bacon para matar a fome." data-preco="R$ 36,90"
+          data-img="img/Big-cheese-bacon_burguer.png" onclick="abrirModalDinamico(this)">
+          <img src="img/Big-cheese-bacon_burguer.png" alt="Big Cheese Bacon">
+        </div>
+        <div class="bloco" data-nome="Especial Bacon"
+          data-desc="Nossa receita especial com pão australiano, cheddar maçaricado, tiras de bacon e molho barbecue."
+          data-preco="R$ 32,90" data-img="img/Especial-bacon.png" onclick="abrirModalDinamico(this)">
+          <img src="img/Especial-bacon.png" alt="Especial Bacon">
+        </div>
+        <div class="bloco" data-nome="Burguer Chicken Bacon"
+          data-desc=" Bacon e frango desfiado com muito cheddar e molho especial." data-preco="R$ 27,90"
+          data-img="img/Burguer_chicken-bacon.png" onclick="abrirModalDinamico(this)">
+          <img src="img/Burguer_chicken-bacon.png" alt="Burguer Chicken Bacon">
+        </div>
+        <div class="bloco" data-nome="Especial Cheese Burguer"
+          data-desc="Blends smash prensado na chapa, pão pretzel e molho especial de churrasco." data-preco="R$ 22,90"
+          data-img="img/Especial_Cheese-burguer.png" onclick="abrirModalDinamico(this)">
+          <img src="img/Especial_Cheese-burguer.png" alt="Especial Cheese Burguer">
+        </div>
+   
+      </div>
+
+      <button class="seta-cardapio dir" onclick="scrollCardapio(this, 1)">&#10095;</button>
+    </div>
+
+    <div class="linha"></div>
+    <h2 id="pizzas" translate="no">Pizzas</h2>
+
+    <div class="slider-cardapio-wrapper">
+      <button class="seta-cardapio esq" onclick="scrollCardapio(this, -1)">&#10094;</button>
+
+      <div class="container-cardapio" >
+        <div class="circle" data-nome="Pizza Cheese"
+          data-desc="Molho de tomate artesanal coberto com uma camada generosa de muçarela premium."
+          data-preco="R$ 42,00" data-img="img/Pizza-cheese.png" onclick="abrirModalDinamico(this)">
+          <img src="img/Pizza-cheese.png" alt="Pizza Cheese">
+        </div>
+        <div class="circle" data-nome="Pizza Calabresa"
+          data-desc="Clássica combinação de calabresa defumada fatiada com cebola fresca e azeitonas."
+          data-preco="R$ 44,90" data-img="img/Pizza-calabreza.png" onclick="abrirModalDinamico(this)">
+          <img src="img/Pizza-calabreza.png" alt="Pizza Calabresa">
+        </div>
+        <div class="circle" data-nome="Pizza Chicken"
+          data-desc="Peito de frango desfiado temperado, milho selecionado e catupiry original." data-preco="R$ 48,00"
+          data-img="img/Pizza-chicken.png" onclick="abrirModalDinamico(this)">
+          <img src="img/Pizza-chicken.png" alt="Pizza Chicken">
+        </div>
+        <div class="circle" data-nome="Pizza Portuguesa"
+          data-desc="Presunto, ovos cozidos, ervilha, cebola e muçarela. A queridinha de sempre." data-preco="R$ 49,90"
+          data-img="img/Pizza-portuguesa.png" onclick="abrirModalDinamico(this)">
+          <img src="img/Pizza-portuguesa.png" alt="Pizza Portuguesa">
+        </div>
+        <div class="circle" data-nome="Pizza Strogonoff"
+          data-desc="Tiras de filé de frango ao molho cremoso de strogonoff, finalizado com batata palha crocante."
+          data-preco="R$ 52,00" data-img="img/Pizza-stroggonoff.png" onclick="abrirModalDinamico(this)">
+          <img src="img/Pizza-stroggonoff.png" alt="Pizza Stroggonoff">
+        </div>
+        <div class="circle" data-nome="Pizza Marguerita"
+          data-desc="Muçarela, rodelas de tomate fresco, manjericão colhido na hora e azeite de oliva."
+          data-preco="R$ 45,00" data-img="img/Pizza-marguerita.png" onclick="abrirModalDinamico(this)">
+          <img src="img/Pizza-marguerita.png" alt="Pizza Marguerita">
+        </div>
+        <div class="circle" data-nome="Pizza 4 queijos"
+          data-desc="Uma fantástica combinação de muçarela, catupiry, provolone e o toque marcante do gorgonzola."
+          data-preco="R$ 54,00" data-img="img/Pizza-4queijos.png" onclick="abrirModalDinamico(this)">
+          <img src="img/Pizza-4queijos.png" alt="Pizza 4 queijos">
+        </div>
+      </div>
+
+      <button class="seta-cardapio dir" onclick="scrollCardapio(this, 1)">&#10095;</button>
+    </div>
+
+    <div class="linha"></div>
+    <h2 id="porcoes" translate="no">Porções</h2>
+
+    <div class="slider-cardapio-wrapper">
+      <button class="seta-cardapio esq" onclick="scrollCardapio(this, -1)">&#10094;</button>
+
+      <div class="container-cardapio" >
+        <div class="bloco" data-nome="Porção de Batata frita pequena"
+          data-desc="Batatas selecionadas fritas na temperatura ideal, crocantes por fora e macias por dentro."
+          data-preco="R$ 14,90" data-img="img/First_fries-image.png" onclick="abrirModalDinamico(this)">
+          <img src="img/First_fries-image.png" alt="Batata pequena">
+        </div>
+        <div class="bloco" data-nome="Porção de Batata frita grande"
+          data-desc="A porção ideal para compartilhar com a galera. Acompanha maionese verde da casa."
+          data-preco="R$ 24,90" data-img="img/Porcao-batata_big.png" onclick="abrirModalDinamico(this)">
+          <img src="img/Porcao-batata_big.png" alt="Batata grande">
+        </div>
+        <div class="bloco" data-nome="Porção de Batata frita grande com cheddar e bacon"
+          data-desc="Nossa batata frita GG coberta com uma poça de cheddar cremoso derretido e cubos de bacon bem crocantes."
+          data-preco="R$ 34,90" data-img="img/Porcao_batata_bigbacon.png" onclick="abrirModalDinamico(this)">
+          <img src="img/Porcao_batata_bigbacon.png" alt="Batata cheddar e bacon">
+        </div>
+         <div class="bloco" data-nome="Porção de Batata frita rústica grande"
+          data-desc="Batatas cortar em gomos com casca, temperadas com alecrim fresco, alho e páprica picante."
+          data-preco="R$ 28,00" data-img="img/Porcao-batata_rustica.png" onclick="abrirModalDinamico(this)">
+          <img src="img/Porcao-batata_rustica.png" alt="Batata rústica">
+        </div>
+          <div class="bloco" data-nome="Porção de Frango empanado"
+          data-desc="Iscas de peito de frango empanadas na farinha panko super crocante, servidas com molho barbecue."
+          data-preco="R$ 38,90" data-img="img/Porcao-frango_grande.png" onclick="abrirModalDinamico(this)">
+          <img src="img/Porcao-frango_grande.png" alt="Frango empanado">
+        </div>
+          <div class="bloco" data-nome="Porção de Polenta frita"
+          data-desc="Palitos de polenta frita artesanal, crocância externa irresistível com interior super cremoso, salpicada com queijo parmesão."
+          data-preco="R$ 22,00" data-img="img/Porcao-polenta_grande.png" onclick="abrirModalDinamico(this)">
+          <img src="img/Porcao-polenta_grande.png" alt="Polenta frita">
+        </div>
+
+      </div>
+
+      <button class="seta-cardapio dir" onclick="scrollCardapio(this, 1)">&#10095;</button>
+    </div>
+
+      <div class="linha"></div>
+    <h2 id="bebidas" translate="no">Bebidas</h2>
+
+    <div class="slider-cardapio-wrapper">
+      <button class="seta-cardapio esq" onclick="scrollCardapio(this, -1)">&#10094;</button>
+
+      <div class="container-cardapio" >
+        <div class="bloco" data-nome="Coca Cola"
+          data-desc="Lata de 350ml trincando de gelada para acompanhar o seu lanche favorito."
+          data-preco="R$ 6,00" data-img="img/CocaCola_img.png" onclick="abrirModalDinamico(this)">
+          <img src="img/CocaCola_img.png" alt="Coca Cola">
+        </div>
+        <div class="bloco" data-nome="Sprite"
+          data-desc="Refrigerante de lima-limão refrescante em lata de 350ml com muito gelo."
+          data-preco="R$ 6,00" data-img="img/Sprite_img.png" onclick="abrirModalDinamico(this)">
+          <img src="img/Sprite_img.png" alt="Sprite">
+        </div>
+        <div class="bloco" data-nome="Guaraná Antarctica"
+          data-desc="O autêntico sabor do guaraná brasileiro, servido em lata de 350ml bem gelado."
+          data-preco="R$ 6,00" data-img="img/Guarana_img.png" onclick="abrirModalDinamico(this)">
+          <img src="img/Guarana_img.png" alt="Guaraná">
+        </div>
+         <div class="bloco" data-nome="Pepsi"
+          data-desc="Sabor intenso e refrescante em lata de 350ml, perfeita para quem ama refrigerante de cola."
+          data-preco="R$ 6,00" data-img="img/Pepsi_img.png" onclick="abrirModalDinamico(this)">
+          <img src="img/Pepsi_img.png" alt="Pepsi">
+        </div>
+          <div class="bloco" data-nome="Água normal"
+          data-desc="Garrafa de água mineral sem gás 500ml para se manter hidratado de forma leve."
+          data-preco="R$ 4,00" data-img="img/Agua_img.png" onclick="abrirModalDinamico(this)">
+          <img src="img/Agua_img.png" alt="Água normal">
+        </div>
+          <div class="bloco" data-nome="Água com gás"
+          data-desc="Água mineral gaseificada de 500ml, ideal com uma rodela de limão."
+          data-preco="R$ 4,50" data-img="img/Agua-gas_img.png" onclick="abrirModalDinamico(this)">
+          <img src="img/Agua-gas_img.png" alt="Água com gás">
+        </div>
+
+      </div>
+
+      <button class="seta-cardapio dir" onclick="scrollCardapio(this, 1)">&#10095;</button>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Space Foods</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+    integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+    crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+
+</body>
+
+</html>
