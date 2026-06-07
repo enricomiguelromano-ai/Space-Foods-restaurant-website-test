@@ -4,6 +4,11 @@
    box-sizing: border-box;
 }
 
+html, body {
+   width: 100%;
+   overflow-x: hidden;
+}
+
 main {
    display: flex;
    flex-direction: column;
@@ -21,6 +26,10 @@ main {
 
 nav {
    position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   z-index: 1030;
 }
 
 nav a:hover {
@@ -207,7 +216,7 @@ nav a:hover {
 }
 
 .icons a{
-   margin: 2%;
+   margin: 1%;
 }
 
 main h2 {
@@ -261,11 +270,11 @@ main h2 {
 }
 
 .seta-cardapio.esq {
-   left: -60px;
+   left: -20px;
 }
 
 .seta-cardapio.dir {
-   right: -60px;
+   right: -20px;
 }
 
 .bloco, .circle {
